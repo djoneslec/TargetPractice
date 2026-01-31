@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
-public class Shooting_Scripts : MonoBehaviour {
+public class Shooting_Script : MonoBehaviour {
     //Effects
     public GameObject brokenTarget;
     AudioSource speaker;
@@ -18,10 +18,15 @@ public class Shooting_Scripts : MonoBehaviour {
     void Start() {
         //Set up elements
         if ( PlayerPrefs.GetFloat( "BestTime" ) == 0f ) {
-            PlayerPrefs.SetFloat( "BestTime", float.MaxValue );
+            ResetBestTime();
         }
         speaker = GetComponent<AudioSource>();
+        speaker.clip = shootSound;
         scoreText.text = "Score = 0";
+    }
+
+    public void ResetBestTime() {
+        PlayerPrefs.SetFloat( "BestTime", 100f );
     }
 
     void Update() {
@@ -31,7 +36,8 @@ public class Shooting_Scripts : MonoBehaviour {
         }
         //Update Timer UI
         timerText.text = "Time Remaining = " + timer.ToString("F2");
-
+        /*******************************
+         
         if ( Input.GetMouseButtonDown( 0 ) ) {
             //Sound effect
             speaker.pitch = Random.Range( 0.8f, 1.1f );
@@ -44,6 +50,8 @@ public class Shooting_Scripts : MonoBehaviour {
                 }
             }
         }
+        
+        *///////////////////////////////
         //Reset scene
         if ( Input.GetKeyDown( KeyCode.R ) ) {
             SceneManager.LoadScene( "Playground" );
@@ -67,5 +75,10 @@ public class Shooting_Scripts : MonoBehaviour {
         GameObject brokenClone = Instantiate(brokenTarget, hit.transform.position, hit.transform.rotation);
         Destroy( brokenClone, 3f );
         Destroy( hit.transform.gameObject );
+        //Add force to fragments
+        foreach(Rigidbody fragment in brokenClone.GetComponentsInChildren<Rigidbody>() ) {
+            fragment.AddExplosionForce( 10f, hit.point, 5f, 0.2f, ForceMode.Impulse );
+            
+        }
     }
 }

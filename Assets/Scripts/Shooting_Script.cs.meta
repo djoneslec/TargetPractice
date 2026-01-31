@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ce855ad776e7b744887db95de06b97f7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - brokenTarget: {fileID: 7832215731595621359, guid: a7fbdbf8b054b0047ae82452b04f0673, type: 3}
+  - shootSound: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - timerText: {instanceID: 0}
+  - endGamePanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
