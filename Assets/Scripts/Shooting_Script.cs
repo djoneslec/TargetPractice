@@ -36,22 +36,11 @@ public class Shooting_Script : MonoBehaviour {
         }
         //Update Timer UI
         timerText.text = "Time Remaining = " + timer.ToString("F2");
-        /*******************************
+        //*******************************
          
-        if ( Input.GetMouseButtonDown( 0 ) ) {
-            //Sound effect
-            speaker.pitch = Random.Range( 0.8f, 1.1f );
-            speaker.Play();
-            //Shoot raycast
-            RaycastHit hit;
-            if ( Physics.Raycast(transform.position, transform.forward, out hit, 100f) ) {
-                if ( hit.transform.CompareTag( "Target" ) ) {
-                    Shoot( hit );
-                }
-            }
-        }
+
         
-        *///////////////////////////////
+        //*******************************
         //Reset scene
         if ( Input.GetKeyDown( KeyCode.R ) ) {
             SceneManager.LoadScene( "Playground" );
